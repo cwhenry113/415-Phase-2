@@ -10,7 +10,7 @@ const client = new Client({
     user: 'carter',
     password: 'DqOgzzFfsBwpj6SKEId73vQJ2luPzwhA',
 });
-await client.connect();
+client.connect();
 
 //Create the tickets table if it does not already exist
 client.query('CREATE TABLE IF NOT EXISTS tickets (id serial PRIMARY KEY, type VARCHAR(20), subject VARCHAR(64), description VARCHAR(255), status VARCHAR(6))', (err, res) => {
