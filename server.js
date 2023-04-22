@@ -10,7 +10,7 @@ const client = new Client({
     user: 'carter',
     password: 'DqOgzzFfsBwpj6SKEId73vQJ2luPzwhA',
 });
-client.connect();
+await client.connect();
 
 //Create the tickets table if it does not already exist
 let makeTable = function(){
