@@ -13,9 +13,22 @@ const client = new Client({
 client.connect();
 
 //Create the tickets table if it does not already exist
-client.query('CREATE TABLE IF NOT EXISTS tickets (id serial PRIMARY KEY, type VARCHAR(20), subject VARCHAR(64), description VARCHAR(255), status VARCHAR(6))', (err, res) => {
-    console.log(res)
-});
+let makeTable = function(){
+    let text = 'CREATE TABLE IF NOT EXISTS tickets (id serial PRIMARY KEY, type VARCHAR(20), subject VARCHAR(64), description VARCHAR(255), status VARCHAR(6))'
+    client.query(text, (err, res) => {
+        if (err) {
+            console.log(err.stack)
+        } else {
+            console.log('Table found or created')
+        }
+    })
+}
+makeTable.then(function(){
+    console.log('Function completed')
+})
+makeTable.catch(function(){
+    console.log('Function not completed')
+})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -57,6 +70,7 @@ router.get('/rest/ticket/id', function (req, res) {
 
 //Create a new ticket
 router.post('/rest/ticket', function (req, res) {
+    makeTable()
     let reply
     let text = 'INSERT INTO tickets(type, subject, description, status) VALUES($1, $2, $3, $4, $5) RETURNING id'
     let values = [req.body.type, req.body.subject, req.body.description, req.body.status]
