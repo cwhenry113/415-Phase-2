@@ -23,12 +23,6 @@ let makeTable = function(){
         }
     })
 }
-makeTable.then(function(){
-    console.log('Function completed')
-})
-makeTable.catch(function(){
-    console.log('Function not completed')
-})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
