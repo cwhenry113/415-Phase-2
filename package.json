@@ -1,0 +1,17 @@
+{
+  "name": "415-example",
+  "version": "1.0.0",
+  "description": "This is for Dr. Burris",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node server.js"
+  },
+  "author": "Nicholas Moran",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.16.2",
+    "pg": "^8.10.0"
+  }
+}
