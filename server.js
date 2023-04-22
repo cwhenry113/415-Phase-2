@@ -14,9 +14,7 @@ client.connect();
 
 //Create the tickets table if it does not already exist
 client.query('CREATE TABLE IF NOT EXISTS tickets (id serial PRIMARY KEY, type VARCHAR(20), subject VARCHAR(64), description VARCHAR(255), status VARCHAR(6))', (err, res) => {
-    if (err) throw err
     console.log(res)
-    client.end()
 });
 
 app.use(express.json());
